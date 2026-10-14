@@ -3,7 +3,7 @@
    · 아이콘·매니페스트는 캐시 우선 → 오프라인에서도 뜬다
    · 네트워크가 없으면 캐시로 동작 (교재 탭 오프라인 사용)
 */
-const VERSION = 'chalkak-v5';
+const VERSION = 'chalkak-v7';
 const CORE = [
   './',
   './index.html',
@@ -11,7 +11,8 @@ const CORE = [
   './icon-180.png',
   './icon-192.png',
   './icon-512.png',
-  './icon-maskable-512.png'
+  './icon-maskable-512.png',
+  './LXGWWenKai-subset.woff2'
 ];
 
 self.addEventListener('install', function (e) {
