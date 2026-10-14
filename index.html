@@ -112,66 +112,8 @@ header{top:var(--tabh) !important}
   border-radius:11px;padding:14px 16px}
 .land .hint{margin-top:18px;font-size:12px;color:#9a9a9e;line-height:1.75}
 </style>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="찰칵 중국어">
-<meta name="application-name" content="찰칵 중국어">
-<meta name="theme-color" content="#1f4e79">
-<meta name="format-detection" content="telephone=no">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<style>
-/* ═══ 찰칵 중국어 상단 탭 ═══ */
-:root{--tabh:46px}
-body{padding-top:var(--tabh) !important}
-header{top:var(--tabh) !important}
-.apptabs{position:fixed;top:0;left:0;right:0;height:var(--tabh);display:flex;
-  background:#fff;border-bottom:1px solid var(--line,#e6e2da);z-index:9999}
-.apptabs button{flex:1;border:0;background:#fff;font-family:inherit;font-size:14px;
-  color:#6b6b70;padding:0;border-radius:0;border-bottom:3px solid transparent}
-.apptabs button.on{color:#1f4e79;font-weight:700;border-bottom-color:#1f4e79}
-.pane{display:none}.pane.on{display:block}
-.land{padding:34px 22px 40px;text-align:center}
-.land .big{font-size:56px;line-height:1}
-.land h2{font-size:19px;margin:14px 0 8px;color:#1c1c1e}
-.land .lead{font-size:14px;line-height:1.85;color:#4a4a4c;margin:0 0 24px}
-.land .cta{display:inline-block;background:#1f4e79;color:#fff !important;text-decoration:none;
-  font-size:16px;font-weight:700;padding:15px 30px;border-radius:12px;
-  box-shadow:0 3px 10px rgba(31,78,121,.28)}
-.land .steps{margin:26px auto 0;max-width:330px;text-align:left;font-size:13.5px;
-  line-height:2.0;color:#3a3a3c;background:#fff;border:1px solid var(--line,#e6e2da);
-  border-radius:11px;padding:14px 16px}
-.land .hint{margin-top:18px;font-size:12px;color:#9a9a9e;line-height:1.75}
-</style>
 </head>
 <body>
-<div class="apptabs">
-  <button id="tPhoto" class="on" onclick="ckTab(0)">📸 사진으로 학습</button>
-  <button id="tLib" onclick="ckTab(1)">📚 교재</button>
-</div>
-<div id="panePhoto" class="pane on">
-  <div class="land">
-    <div class="big">📸</div>
-    <h2>사진으로 학습자료 만들기</h2>
-    <p class="lead">책 페이지를 찍으면<br><b>병음 · 해석 · HSK 어휘 분석</b>을<br>바로 만들어 드립니다.</p>
-    <a class="cta" href="https://chalkak-chinese-learning-nxf5ki5qhxlwdnx37ljxyt.streamlit.app/" target="_blank" rel="noopener">사진 찍으러 가기 →</a>
-    <div class="steps">
-      <div>① 열린 화면에서 <b>로그인</b> (또는 회원가입)</div>
-      <div>② <b>책 페이지 사진</b>을 올리기 (카메라/갤러리)</div>
-      <div>③ <b>학습자료 생성</b> 버튼</div>
-    </div>
-    <p class="hint">
-    · <b>로그인 없이</b> 사진 학습이 됩니다.<br>
-    · 무료 서버라 첫 접속에 30~60초 걸립니다.<br>
-    · <b>잠들어 있으면 [Yes, get this app back up!] 을 누르세요.</b><br>
-    · 📚 교재 탭은 인터넷 없이도 동작합니다.
-    </p>
-  </div>
-</div>
-<div id="paneLib" class="pane"><div id="libInner">
 <div class="apptabs">
   <button id="tPhoto" class="on" onclick="ckTab(0)">📸 사진으로 학습</button>
   <button id="tLib" onclick="ckTab(1)">📚 교재</button>
@@ -452,32 +394,6 @@ $("top").onclick  = renderList;
 applyFont();
 fillSelects();
 renderList();
-</script>
-</div></div>
-<script>
-/* ═══ 탭 전환 ═══ */
-function ckTab(i){
-  var photo = (i === 0);
-  document.getElementById('panePhoto').classList.toggle('on', photo);
-  document.getElementById('paneLib').classList.toggle('on', !photo);
-  document.getElementById('tPhoto').classList.toggle('on', photo);
-  document.getElementById('tLib').classList.toggle('on', !photo);
-  try { localStorage.setItem('ck_tab', String(i)); } catch(e){}
-  window.scrollTo(0, 0);
-}
-(function(){
-  var t = '0';
-  try { t = localStorage.getItem('ck_tab') || '0'; } catch(e){}
-  ckTab(t === '1' ? 1 : 0);
-})();
-</script>
-<script>
-/* 오프라인 지원 (교재 탭) */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').catch(function () {});
-  });
-}
 </script>
 </div></div>
 <script>
